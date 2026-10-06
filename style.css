@@ -1,0 +1,281 @@
+/* ========================================
+   GENEL
+======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    min-height: 100%;
+
+    font-family: Arial, sans-serif;
+
+    background: #eee8dc;
+
+    color: #2b2118;
+}
+
+
+/* ========================================
+   BAŞLIK
+======================================== */
+
+header {
+    background: #3b2415;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 25px 20px;
+}
+
+header h1 {
+    margin: 0;
+
+    font-size: 42px;
+}
+
+header p {
+    margin: 8px 0 0;
+
+    font-size: 18px;
+}
+
+
+/* ========================================
+   ANA ALAN
+======================================== */
+
+main {
+    width: 100%;
+
+    padding: 30px;
+}
+
+
+/* ========================================
+   HARİTA
+======================================== */
+
+#harita {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    height: 600px;
+
+    margin: 0 auto;
+
+    border: 5px solid #3b2415;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    background: #d8d0c0;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ========================================
+   ZAMAN KONTROL ALANI
+======================================== */
+
+.timeline-container {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: 25px auto 0;
+
+    padding: 25px;
+
+    background: #fffaf0;
+
+    border: 2px solid #c7b49a;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.12);
+
+    text-align: center;
+}
+
+
+/* ========================================
+   YIL
+======================================== */
+
+.year-display {
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+    color: #3b2415;
+
+    margin-bottom: 20px;
+}
+
+#year {
+    color: #8b4513;
+}
+
+
+/* ========================================
+   SÜRGÜ
+======================================== */
+
+#timeline {
+
+    width: 100%;
+
+    height: 8px;
+
+    cursor: pointer;
+
+    accent-color: #8b4513;
+}
+
+
+/* ========================================
+   OLAY BİLGİSİ
+======================================== */
+
+#eventInfo {
+
+    margin-top: 25px;
+
+    padding: 18px;
+
+    background: #f1e5d2;
+
+    border-left: 5px solid #8b4513;
+
+    border-radius: 8px;
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    text-align: left;
+}
+
+#eventInfo strong {
+
+    display: inline-block;
+
+    margin-bottom: 5px;
+
+    font-size: 21px;
+
+    color: #3b2415;
+}
+
+
+/* ========================================
+   SONRAKİ SAVAŞ BUTONU
+======================================== */
+
+#nextWarBtn {
+
+    margin-top: 20px;
+
+    padding: 13px 25px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #3b2415;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        transform 0.2s;
+}
+
+#nextWarBtn:hover {
+
+    background: #6b3e20;
+
+    transform: translateY(-2px);
+}
+
+#nextWarBtn:active {
+
+    transform: translateY(0);
+}
+
+
+/* ========================================
+   LEAFLET POPUP
+======================================== */
+
+.leaflet-popup-content {
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* ========================================
+   MOBİL
+======================================== */
+
+@media (max-width: 700px) {
+
+    header h1 {
+        font-size: 32px;
+    }
+
+    header p {
+        font-size: 16px;
+    }
+
+    main {
+        padding: 15px;
+    }
+
+    #harita {
+        height: 450px;
+
+        border-width: 3px;
+    }
+
+    .timeline-container {
+        padding: 18px;
+    }
+
+    .year-display {
+        font-size: 25px;
+    }
+
+    #eventInfo {
+        font-size: 16px;
+    }
+
+    #nextWarBtn {
+        width: 100%;
+    }
+}

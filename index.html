@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>TarihAtlas</title>
+
+
+    <!-- ================================ -->
+    <!-- LEAFLET CSS -->
+    <!-- ================================ -->
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    >
+
+
+    <!-- ================================ -->
+    <!-- MAPLIBRE CSS -->
+    <!-- ================================ -->
+
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.css"
+    >
+
+
+    <!-- Kendi CSS -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================ -->
+    <!-- BAŞLIK -->
+    <!-- ================================ -->
+
+    <header>
+
+        <h1>🏛️ TarihAtlas</h1>
+
+        <p>
+            Tarihi harita üzerinde keşfet
+        </p>
+
+    </header>
+
+
+    <!-- ================================ -->
+    <!-- ANA İÇERİK -->
+    <!-- ================================ -->
+
+    <main>
+
+
+        <!-- HARİTA -->
+
+        <div id="harita"></div>
+
+
+        <!-- ================================ -->
+        <!-- ZAMAN KONTROLÜ -->
+        <!-- ================================ -->
+
+        <section class="timeline-container">
+
+
+            <!-- YIL -->
+
+            <div class="year-display">
+
+                Yıl:
+
+                <span id="year">
+                    1071
+                </span>
+
+            </div>
+
+
+            <!-- SÜRGÜ -->
+
+            <input
+                type="range"
+                id="timeline"
+                min="0"
+                max="32"
+                value="0"
+                step="1"
+            >
+
+
+            <!-- OLAY BİLGİSİ -->
+
+            <div id="eventInfo">
+
+                <strong>
+                    ⚔️ Malazgirt Savaşı
+                </strong>
+
+                <br>
+
+                <span>
+                    Büyük Selçuklu Sultanı Alp Arslan ile Bizans İmparatoru Romanos Diogenes arasında gerçekleşti.
+                </span>
+
+            </div>
+
+
+            <!-- ================================ -->
+            <!-- SONRAKİ SAVAŞ BUTONU -->
+            <!-- ================================ -->
+
+            <button
+                id="nextWarBtn"
+                type="button"
+            >
+                ⚔️ Sonraki Savaş
+            </button>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- ================================ -->
+    <!-- LEAFLET JS -->
+    <!-- ================================ -->
+
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+    </script>
+
+
+    <!-- ================================ -->
+    <!-- MAPLIBRE JS -->
+    <!-- ================================ -->
+
+    <script
+        src="https://unpkg.com/maplibre-gl@5.6.0/dist/maplibre-gl.js">
+    </script>
+
+
+    <!-- ================================ -->
+    <!-- LEAFLET + MAPLIBRE -->
+    <!-- ================================ -->
+
+    <script
+        src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js">
+    </script>
+
+
+    <!-- ================================ -->
+    <!-- KENDİ JAVASCRIPT -->
+    <!-- ================================ -->
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
