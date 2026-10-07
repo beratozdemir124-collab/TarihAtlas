@@ -1,281 +1,283 @@
 /* ========================================
-   GENEL
-======================================== */
+   TEMEL DEĞİŞKENLER VE SIFIRLAMA
+   ======================================== */
+:root {
+    --bg-dark: rgba(15, 23, 42, 0.85);
+    --bg-card: rgba(30, 41, 59, 0.75);
+    --border-color: rgba(255, 255, 255, 0.12);
+    --accent-gold: #f59e0b;
+    --accent-gold-hover: #d97706;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --shadow-main: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Inter', sans-serif;
+}
 
 * {
     box-sizing: border-box;
-}
-
-html,
-body {
     margin: 0;
     padding: 0;
+}
 
+body, html {
     width: 100%;
-    min-height: 100%;
-
-    font-family: Arial, sans-serif;
-
-    background: #eee8dc;
-
-    color: #2b2118;
+    height: 100%;
+    overflow: hidden;
+    font-family: var(--font-body);
+    background-color: #0f172a;
+    color: var(--text-primary);
 }
-
-
-/* ========================================
-   BAŞLIK
-======================================== */
-
-header {
-    background: #3b2415;
-
-    color: white;
-
-    text-align: center;
-
-    padding: 25px 20px;
-}
-
-header h1 {
-    margin: 0;
-
-    font-size: 42px;
-}
-
-header p {
-    margin: 8px 0 0;
-
-    font-size: 18px;
-}
-
-
-/* ========================================
-   ANA ALAN
-======================================== */
-
-main {
-    width: 100%;
-
-    padding: 30px;
-}
-
 
 /* ========================================
    HARİTA
-======================================== */
-
+   ======================================== */
 #harita {
-
-    width: 100%;
-
-    max-width: 1100px;
-
-    height: 600px;
-
-    margin: 0 auto;
-
-    border: 5px solid #3b2415;
-
-    border-radius: 15px;
-
-    overflow: hidden;
-
-    background: #d8d0c0;
-
-    box-shadow:
-        0 5px 20px rgba(0, 0, 0, 0.25);
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
 }
 
-
 /* ========================================
-   ZAMAN KONTROL ALANI
-======================================== */
-
-.timeline-container {
-
-    width: 100%;
-
-    max-width: 1100px;
-
-    margin: 25px auto 0;
-
-    padding: 25px;
-
-    background: #fffaf0;
-
-    border: 2px solid #c7b49a;
-
-    border-radius: 15px;
-
-    box-shadow:
-        0 4px 15px rgba(0, 0, 0, 0.12);
-
-    text-align: center;
+   ÜST LOGO & YIL BARI
+   ======================================== */
+.top-bar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    pointer-events: none;
 }
 
+.logo, .year-badge, .info-card, .timeline-container {
+    pointer-events: auto;
+    background: var(--bg-dark);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-main);
+    border-radius: 16px;
+}
 
-/* ========================================
-   YIL
-======================================== */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+}
 
-.year-display {
+.logo-icon {
+    font-size: 1.5rem;
+}
 
-    font-size: 30px;
+.logo h1 {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    letter-spacing: 1.5px;
+    color: var(--text-primary);
+}
 
-    font-weight: bold;
+.logo h1 span {
+    color: var(--accent-gold);
+}
 
-    color: #3b2415;
+.year-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8px 20px;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
 
-    margin-bottom: 20px;
+.year-label {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: var(--accent-gold);
+    font-weight: 700;
 }
 
 #year {
-    color: #8b4513;
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
 }
 
-
 /* ========================================
-   SÜRGÜ
-======================================== */
-
-#timeline {
-
-    width: 100%;
-
-    height: 8px;
-
-    cursor: pointer;
-
-    accent-color: #8b4513;
+   BİLGİ KARTI (SOL ALT / ORTA)
+   ======================================== */
+.info-card {
+    position: absolute;
+    bottom: 100px;
+    left: 20px;
+    width: 380px;
+    max-width: calc(100vw - 40px);
+    z-index: 1000;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: all 0.3s ease;
 }
 
+.event-content strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--accent-gold);
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
 
-/* ========================================
-   OLAY BİLGİSİ
-======================================== */
-
-#eventInfo {
-
-    margin-top: 25px;
-
-    padding: 18px;
-
-    background: #f1e5d2;
-
-    border-left: 5px solid #8b4513;
-
-    border-radius: 8px;
-
-    font-size: 18px;
-
+.event-content span {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
     line-height: 1.6;
-
-    text-align: left;
+    display: block;
+    max-height: 160px;
+    overflow-y: auto;
 }
 
-#eventInfo strong {
-
-    display: inline-block;
-
-    margin-bottom: 5px;
-
-    font-size: 21px;
-
-    color: #3b2415;
-}
-
-
-/* ========================================
-   SONRAKİ SAVAŞ BUTONU
-======================================== */
-
-#nextWarBtn {
-
-    margin-top: 20px;
-
-    padding: 13px 25px;
-
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-hover));
+    color: #0f172a;
     border: none;
-
-    border-radius: 8px;
-
-    background: #3b2415;
-
-    color: white;
-
-    font-size: 17px;
-
-    font-weight: bold;
-
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
     cursor: pointer;
-
-    transition:
-        background 0.2s,
-        transform 0.2s;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
 }
 
-#nextWarBtn:hover {
-
-    background: #6b3e20;
-
+.btn-action:hover {
     transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(245, 158, 11, 0.4);
 }
 
-#nextWarBtn:active {
-
+.btn-action:active {
     transform: translateY(0);
 }
 
-
 /* ========================================
-   LEAFLET POPUP
-======================================== */
-
-.leaflet-popup-content {
-
-    font-size: 14px;
-
-    line-height: 1.5;
+   ZAMAN ÇİZELGESİ (SÜRGÜ)
+   ======================================== */
+.timeline-container {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    z-index: 1000;
+    padding: 16px 24px;
 }
 
+.timeline-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+input[type=range]#timeline {
+    -webkit-appearance: none;
+    width: 100%;
+    background: transparent;
+}
+
+input[type=range]#timeline:focus {
+    outline: none;
+}
+
+/* Track Stil */
+input[type=range]#timeline::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+input[type=range]#timeline:hover::-webkit-slider-runnable-track {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Thumb (Sürgü Başlığı) Stil */
+input[type=range]#timeline::-webkit-slider-thumb {
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    background: var(--accent-gold);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7px;
+    box-shadow: 0 0 12px var(--accent-gold);
+    transition: all 0.2s ease;
+}
+
+input[type=range]#timeline::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    background: #fff;
+}
 
 /* ========================================
-   MOBİL
-======================================== */
+   LEAFLET POPUP ÖZELLEŞTİRME
+   ======================================== */
+.leaflet-popup-content-wrapper {
+    background: rgba(15, 23, 42, 0.95) !important;
+    backdrop-filter: blur(10px);
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color);
+    border-radius: 12px !important;
+    box-shadow: var(--shadow-main) !important;
+}
 
-@media (max-width: 700px) {
+.leaflet-popup-tip {
+    background: rgba(15, 23, 42, 0.95) !important;
+}
 
-    header h1 {
-        font-size: 32px;
+.leaflet-popup-close-button {
+    color: var(--text-secondary) !important;
+    padding: 8px !important;
+}
+
+/* ========================================
+   MOBİL UYUMLULUK (RESPONSIVE)
+   ======================================== */
+@media (max-width: 600px) {
+    .info-card {
+        width: calc(100vw - 40px);
+        bottom: 90px;
+        padding: 16px;
     }
 
-    header p {
-        font-size: 16px;
+    .top-bar {
+        top: 10px;
+        left: 10px;
+        right: 10px;
     }
 
-    main {
-        padding: 15px;
+    .logo h1 {
+        font-size: 1rem;
     }
 
-    #harita {
-        height: 450px;
-
-        border-width: 3px;
+    #year {
+        font-size: 1.4rem;
     }
 
     .timeline-container {
-        padding: 18px;
-    }
-
-    .year-display {
-        font-size: 25px;
-    }
-
-    #eventInfo {
-        font-size: 16px;
-    }
-
-    #nextWarBtn {
-        width: 100%;
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        padding: 12px 16px;
     }
 }

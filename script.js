@@ -36,6 +36,51 @@ harita.setMaxZoom(18);
 
 
 // ========================================
+// ÖZEL RENKLİ MARKER (İMLEÇ) SİSTEMİ
+// ========================================
+
+// Kırmızı: Savaşlar
+const redIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
+
+// Mavi: Diplomatik Görüşmeler & Antlaşmalar
+const blueIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-blue.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
+
+// Sarı/Altın: Kongreler & Genelgeler
+const goldIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
+
+// Yeşil: Genel Tarihi Olaylar
+const greenIcon = new L.Icon({
+    iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41]
+});
+
+
+// ========================================
 // HTML ELEMANLARI
 // ========================================
 
@@ -55,7 +100,7 @@ let currentEventIndex = 0;
 
 
 // ========================================
-// TARİHSEL OLAYLAR
+// TARİHSEL OLAYLAR (GENİŞLETİLMİŞ ZENGİN LİSTE)
 // ========================================
 
 const events = [
@@ -125,6 +170,14 @@ const events = [
     },
     {
         year: 1444,
+        type: "diplomacy",
+        text: "📜 Edirne-Segedin Antlaşması",
+        description: "Osmanlı Devleti ile Macaristan Krallığı arasında imzalanan ilk barış antlaşmasıdır. Tuna Nehri iki devlet arasında sınır kabul edilmiştir.",
+        lat: 41.67,
+        lng: 26.55
+    },
+    {
+        year: 1444,
         type: "war",
         text: "⚔️ Varna Savaşı",
         description: "Sultan II. Murad önderliğindeki Osmanlı ordusunun, Papalık teşvikiyle toplanan geniş Haçlı ordusunu Varna yakınlarında bozguna uğrattığı stratejik bir zaferdir.",
@@ -180,12 +233,44 @@ const events = [
         lng: 16.37
     },
     {
+        year: 1533,
+        type: "diplomacy",
+        text: "📜 İstanbul Antlaşması (İbrahim Paşa)",
+        description: "Avusturya Arşidükü'nün protokol bakımından Osmanlı Sadrazamına denk sayıldığı ve Osmanlı'nın Avrupa üzerindeki üstünlüğünü kabul ettirdiği antlaşmadır.",
+        lat: 41.00,
+        lng: 28.97
+    },
+    {
+        year: 1555,
+        type: "diplomacy",
+        text: "📜 Amasya Antlaşması",
+        description: "Osmanlı İmparatorluğu ile Safevi Devleti arasında imzalanan ilk resmi barış antlaşmasıdır. Doğu Anadolu ve Irak sınırları güvence altına alınmıştır.",
+        lat: 40.65,
+        lng: 35.83
+    },
+    {
         year: 1571,
         type: "war",
         text: "⚔️ Kıbrıs'ın Fethi",
         description: "Lala Mustafa Paşa komutasındaki Osmanlı donanması ve kara birliklerinin Venedik kontrolündeki Kıbrıs adasını fethetmesidir. Doğu Akdeniz ticaret yollarının güvenliği tam olarak sağlanmıştır.",
         lat: 35.13,
         lng: 33.43
+    },
+    {
+        year: 1606,
+        type: "diplomacy",
+        text: "📜 Zitvatorok Antlaşması",
+        description: "Osmanlı Padişahı ile Avusturya Arşidükü eşit sayılmış, Osmanlı Devleti'nin Kanuni döneminden beri Avusturya üzerindeki protokol üstünlüğü sona ermiştir.",
+        lat: 47.78,
+        lng: 18.12
+    },
+    {
+        year: 1639,
+        type: "diplomacy",
+        text: "📜 Kasr-ı Şirin Antlaşması",
+        description: "IV. Murad'ın Bağdat Seferi sonrasında Safeviler ile imzalanmıştır. Günümüz Türkiye-İran sınırının büyük ölçüde çizildiği tarihi antlaşmadır.",
+        lat: 34.36,
+        lng: 45.58
     },
     {
         year: 1683,
@@ -197,7 +282,7 @@ const events = [
     },
     {
         year: 1699,
-        type: "event",
+        type: "diplomacy",
         text: "📜 Karlofça Antlaşması",
         description: "Kutsal İttifak savaşları sonrasında imzalanan bu antlaşma, Osmanlı İmparatorluğu'nun Batı'da büyük çapta toprak kaybettiği ilk uluslararası antlaşmadır.",
         lat: 45.26,
@@ -212,8 +297,16 @@ const events = [
         lng: 28.25
     },
     {
+        year: 1718,
+        type: "diplomacy",
+        text: "📜 Pasarofça Antlaşması",
+        description: "Avusturya ve Venedik ile imzalanan antlaşmadır. Osmanlı Devleti Batı'nın üstünlüğünü kabul etmiş ve Lale Devri süreci başlamıştır.",
+        lat: 44.62,
+        lng: 21.18
+    },
+    {
         year: 1774,
-        type: "event",
+        type: "diplomacy",
         text: "📜 Küçük Kaynarca Antlaşması",
         description: "Osmanlı-Rus Savaşı sonrasında imzalanan son derece ağır bir antlaşmadır. Kırım bağımsız olmuş ve Rusya, Osmanlı coğrafyasındaki Ortodoksların hami haklarını elde etmiştir.",
         lat: 45.33,
@@ -236,12 +329,36 @@ const events = [
         lng: 34.10
     },
     {
+        year: 1856,
+        type: "diplomacy",
+        text: "📜 Paris Antlaşması",
+        description: "Kırım Savaşı sonrası imzalanmıştır. Osmanlı Devleti bir Avrupa devleti sayılmış ve toprak bütünlüğü Avrupalı devletlerin garantisine verilmiştir.",
+        lat: 48.85,
+        lng: 2.35
+    },
+    {
         year: 1877,
         type: "war",
         text: "⚔️ 93 Harbi (1877-1878 Osmanlı-Rus Savaşı)",
         description: "Gazi Osman Paşa'nın Plevne Savunması ve Nene Hatun'un Aziziye Tabyalarındaki direnişiyle simgeleşen; Osmanlı'nın Balkanlar ve Kafkasya'da devasa topraklar kaybettiği yıkıcı bir savaştır.",
         lat: 43.21,
         lng: 27.91
+    },
+    {
+        year: 1878,
+        type: "diplomacy",
+        text: "📜 Berlin Antlaşması",
+        description: "93 Harbi sonrası imzalanmıştır. Sırbistan, Karadağ ve Romanya bağımsız olmuş, Kars, Ardahan ve Batum Rusya'ya bırakılmıştır.",
+        lat: 52.52,
+        lng: 13.40
+    },
+    {
+        year: 1912,
+        type: "diplomacy",
+        text: "📜 Uşi Antlaşması",
+        description: "Trablusgarp Savaşı sonunda İtalya ile imzalanmıştır. Trablusgarp ve Bingazi İtalya'ya bırakılmış, Oniki Ada geçici olarak devredilmiştir.",
+        lat: 46.51,
+        lng: 6.63
     },
     {
         year: 1912,
@@ -277,7 +394,7 @@ const events = [
     },
     {
         year: 1918,
-        type: "event",
+        type: "diplomacy",
         text: "📜 Mondros Ateşkes Antlaşması",
         description: "I. Dünya Savaşı sonunda Limni Adası'nda imzalanan ağır şartlara sahip mütarekedir. 7. ve 24. maddeleriyle İtilaf Devletleri'ne Anadolu'yu işgal etme bahanesi sunmuştur.",
         lat: 40.10,
@@ -292,12 +409,60 @@ const events = [
         lng: 36.33
     },
     {
+        year: 1919,
+        type: "congress",
+        text: "📜 Amasya Genelgesi",
+        description: "'Milletin bağımsızlığını yine milletin azim ve kararı kurtaracaktır' ilkesiyle Millî Mücadele'nin amacı, gerekçesi ve yöntemi tüm dünyaya ilan edilmiştir.",
+        lat: 40.65,
+        lng: 35.83
+    },
+    {
+        year: 1919,
+        type: "congress",
+        text: "📜 Erzurum Kongresi",
+        description: "Mustafa Kemal Paşa başkanlığında toplanan kongrede 'Manda ve himaye kabul edilemez' ve 'Vatan bir bütündür, parçalanamaz' ilkeleri kararlaştırılmıştır.",
+        lat: 39.9042,
+        lng: 41.2679
+    },
+    {
+        year: 1919,
+        type: "congress",
+        text: "📜 Sivas Kongresi",
+        description: "Tüm cemiyetler Anadolu ve Rumeli Müdafaa-i Hukuk Cemiyeti adı altında birleştirilmiş, Millî Mücadele tek bir merkezden yönetilmeye başlanmıştır.",
+        lat: 39.7477,
+        lng: 37.0179
+    },
+    {
         year: 1920,
-        type: "event",
+        type: "diplomacy",
+        text: "📜 Gümrü Antlaşması",
+        description: "TBMM Hükümeti'nin imzaladığı ilk uluslararası antlaşmadır. Ermenistan Misak-ı Millî'yi tanımış ve Doğu Cephesi kapanmıştır.",
+        lat: 40.78,
+        lng: 43.84
+    },
+    {
+        year: 1920,
+        type: "diplomacy",
         text: "📜 Sevr Antlaşması",
         description: "İtilaf Devletleri ile Osmanlı Hükümeti arasında Paris'te imzalanan ancak Ankara'daki TBMM tarafından kesinlikle reddedilen, Türk milletini yok etmeyi amaçlayan ölü doğmuş antlaşmadır.",
         lat: 48.85,
         lng: 2.35
+    },
+    {
+        year: 1921,
+        type: "diplomacy",
+        text: "📜 Moskova Antlaşması",
+        description: "TBMM ile Sovyetler Birliği arasında imzalanmıştır. Büyük bir Avrupa devleti TBMM'yi ve Misak-ı Millî'yi ilk kez resmen tanımıştır.",
+        lat: 55.75,
+        lng: 37.61
+    },
+    {
+        year: 1921,
+        type: "diplomacy",
+        text: "📜 Kars Antlaşması",
+        description: "Kafkas Cumhuriyetleri (Azerbaycan, Ermenistan, Gürcistan) ile imzalanmış ve Türkiye'nin Doğu Sınırı kesin olarak çizilmiştir.",
+        lat: 40.60,
+        lng: 43.09
     },
     {
         year: 1921,
@@ -308,6 +473,14 @@ const events = [
         lng: 32.35
     },
     {
+        year: 1921,
+        type: "diplomacy",
+        text: "📜 Ankara Antlaşması (Fransa)",
+        description: "Sakarya Zaferi sonrası Fransa ile imzalanmıştır. Fransa TBMM'yi tanıyan ilk İtilaf Devleti olmuş ve Güney Cephesi kapanmıştır.",
+        lat: 39.93,
+        lng: 32.85
+    },
+    {
         year: 1922,
         type: "war",
         text: "⚔️ Büyük Taarruz ve Başkomutanlık Meydan Muharebesi",
@@ -316,10 +489,34 @@ const events = [
         lng: 30.54
     },
     {
+        year: 1922,
+        type: "diplomacy",
+        text: "🤝 Mudanya Ateşkes Antlaşması",
+        description: "Kurtuluş Savaşı'nın askeri safhasını bitiren antlaşmadır. Doğu Trakya, İstanbul ve Boğazlar savaş yapılmadan diplomatik yolla kurtarılmıştır.",
+        lat: 40.37,
+        lng: 28.88
+    },
+    {
+        year: 1923,
+        type: "diplomacy",
+        text: "🤝 Lozan Barış Antlaşması",
+        description: "İsviçre'nin Lozan şehrinde gerçekleştirilen çetin diplomatik görüşmeler sonucunda Yeni Türk Devletinin bağımsızlığı ve sınırları tüm dünyaca kabul edilmiştir.",
+        lat: 46.5197,
+        lng: 6.6323
+    },
+    {
         year: 1923,
         type: "event",
         text: "🇹🇷 Türkiye Cumhuriyeti'nin İlanı",
         description: "Lozan Barış Antlaşması'nın ardından 29 Ekim 1923'te TBMM'de kabul edilen kararla Türkiye Cumhuriyeti ilan edilmiş, Cumhurbaşkanlığına Mustafa Kemal Atatürk seçilmiştir.",
+        lat: 39.9334,
+        lng: 32.8597
+    },
+    {
+        year: 1926,
+        type: "diplomacy",
+        text: "🤝 Ankara Antlaşması (Musul Görüşmeleri)",
+        description: "Türkiye ile İngiltere arasında sürdürülen diplomatik temaslar ve görüşmeler neticesinde Musul meselesi sınır ve petrol gelirleri protokolü ile karara bağlanmıştır.",
         lat: 39.9334,
         lng: 32.8597
     },
@@ -332,18 +529,42 @@ const events = [
         lng: 32.8597
     },
     {
+        year: 1932,
+        type: "diplomacy",
+        text: "🌐 Milletler Cemiyeti'ne Katılım",
+        description: "Türkiye Cumhuriyeti, yürüttüğü barışçıl dış politika ('Yurtta sulh, cihanda sulh') doğrultusunda davet üzerine Milletler Cemiyeti'ne resmen katılmıştır.",
+        lat: 46.2044,
+        lng: 6.1432
+    },
+    {
+        year: 1934,
+        type: "diplomacy",
+        text: "🤝 Balkan Antantı",
+        description: "Türkiye, Yunanistan, Romanya ve Yugoslavya arasında Atina'da imzalanmıştır. Türkiye Batı sınırlarının güvenliğini tescil ettirmiştir.",
+        lat: 37.98,
+        lng: 23.72
+    },
+    {
         year: 1936,
-        type: "event",
+        type: "diplomacy",
         text: "🚢 Montrö Boğazlar Sözleşmesi",
-        description: "İsviçre'de imzalanan antlaşmayla İstanbul ve Çanakkale Boğazları üzerindeki tüm egemenlik ve askeri denetim hakları kesin olarak Türkiye Cumhuriyeti'ne devredilmiştir.",
-        lat: 46.5197,
-        lng: 6.6323
+        description: "İsviçre'de yapılan uluslararası görüşmeler neticesinde Montrö Sözleşmesi imzalanmış; Boğazlar üzerindeki tüm egemenlik ve askeri denetim hakları Türkiye Cumhuriyeti'ne geçmiştir.",
+        lat: 46.4312,
+        lng: 6.9107
+    },
+    {
+        year: 1937,
+        type: "diplomacy",
+        text: "🤝 Sadabat Paktı",
+        description: "Türkiye, İran, Irak ve Afganistan arasında Tahran'daki Sadabat Sarayı'nda imzalanmıştır. Türkiye Doğu sınırlarının güvenliğini sağlamıştır.",
+        lat: 35.68,
+        lng: 51.38
     },
     {
         year: 1939,
-        type: "event",
+        type: "diplomacy",
         text: "🇹🇷 Hatay'ın Anavatana Katılması",
-        description: "Hatay Millet Meclisi'nin oy birliğiyle aldığı karar doğrultusunda Hatay, Türkiye Cumhuriyeti sınırlarına katılmış ve Atatürk'ün şahsi meselesi kabul ettiği diplomatik mücadele zaferle sonuçlanmıştır.",
+        description: "Hatay Millet Meclisi'nin oy birliğiyle aldığı karar ve sürdürülen diplomatik mücadeleler doğrultusunda Hatay, Türkiye Cumhuriyeti sınırlarına katılmıştır.",
         lat: 36.2023,
         lng: 36.1613
     },
@@ -441,7 +662,6 @@ function showEvent(index) {
     // ALT BİLGİ ALANI
     eventInfo.innerHTML = `
         <strong>${event.text}</strong>
-        <br>
         <span>${event.description}</span>
     `;
 
@@ -451,14 +671,24 @@ function showEvent(index) {
         activeMarker = null;
     }
 
+    // OLAY TİPİNE GÖRE RENKLİ MARKER SEÇİMİ
+    let selectedIcon = greenIcon;
+    if (event.type === "war") {
+        selectedIcon = redIcon;        // Kırmızı = Savaşlar
+    } else if (event.type === "diplomacy") {
+        selectedIcon = blueIcon;       // Mavi = Diplomatik Görüşmeler & Antlaşmalar
+    } else if (event.type === "congress") {
+        selectedIcon = goldIcon;       // Sarı/Altın = Kongreler
+    }
+
     // YENİ MARKER EKLE
-    activeMarker = L.marker([event.lat, event.lng]).addTo(harita);
+    activeMarker = L.marker([event.lat, event.lng], { icon: selectedIcon }).addTo(harita);
 
     // POPUP
     activeMarker.bindPopup(`
         <div style="min-width:220px; max-width:320px; padding: 4px;">
-            <h3 style="margin:0 0 8px 0; font-size:15px; color:#2c3e50; border-bottom:1px solid #ddd; padding-bottom:4px;">${event.text} (${event.year})</h3>
-            <p style="margin:0; line-height:1.5; font-size:13px; color:#333;">${event.description}</p>
+            <h3 style="margin:0 0 8px 0; font-size:15px; color:#f59e0b; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:6px; font-family:'Cinzel', serif;">${event.text} (${event.year})</h3>
+            <p style="margin:0; line-height:1.5; font-size:13px; color:#94a3b8;">${event.description}</p>
         </div>
     `);
 
