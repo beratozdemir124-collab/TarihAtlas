@@ -10,12 +10,15 @@ html,
 body {
     margin: 0;
     padding: 0;
+
     width: 100%;
     min-height: 100%;
+
     font-family: Arial, sans-serif;
+
     background: #eee8dc;
+
     color: #2b2118;
-    overflow-x: hidden;
 }
 
 
@@ -25,18 +28,23 @@ body {
 
 header {
     background: #3b2415;
+
     color: white;
+
     text-align: center;
+
     padding: 25px 20px;
 }
 
 header h1 {
     margin: 0;
+
     font-size: 42px;
 }
 
 header p {
     margin: 8px 0 0;
+
     font-size: 18px;
 }
 
@@ -47,9 +55,8 @@ header p {
 
 main {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+
+    padding: 30px;
 }
 
 
@@ -58,17 +65,25 @@ main {
 ======================================== */
 
 #harita {
+
     width: 100%;
+
     max-width: 1100px;
+
     height: 600px;
+
     margin: 0 auto;
+
     border: 5px solid #3b2415;
+
     border-radius: 15px;
+
     overflow: hidden;
+
     background: #d8d0c0;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.25);
-    position: relative;
-    z-index: 1;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.25);
 }
 
 
@@ -77,14 +92,24 @@ main {
 ======================================== */
 
 .timeline-container {
+
     width: 100%;
+
     max-width: 1100px;
+
     margin: 25px auto 0;
+
     padding: 25px;
+
     background: #fffaf0;
+
     border: 2px solid #c7b49a;
+
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.12);
+
     text-align: center;
 }
 
@@ -94,9 +119,13 @@ main {
 ======================================== */
 
 .year-display {
+
     font-size: 30px;
+
     font-weight: bold;
+
     color: #3b2415;
+
     margin-bottom: 20px;
 }
 
@@ -110,11 +139,14 @@ main {
 ======================================== */
 
 #timeline {
+
     width: 100%;
-    height: 12px;
+
+    height: 8px;
+
     cursor: pointer;
+
     accent-color: #8b4513;
-    touch-action: manipulation;
 }
 
 
@@ -123,20 +155,32 @@ main {
 ======================================== */
 
 #eventInfo {
+
     margin-top: 25px;
+
     padding: 18px;
+
     background: #f1e5d2;
+
     border-left: 5px solid #8b4513;
+
     border-radius: 8px;
+
     font-size: 18px;
+
     line-height: 1.6;
+
     text-align: left;
 }
 
 #eventInfo strong {
+
     display: inline-block;
+
     margin-bottom: 5px;
+
     font-size: 21px;
+
     color: #3b2415;
 }
 
@@ -146,25 +190,39 @@ main {
 ======================================== */
 
 #nextWarBtn {
+
     margin-top: 20px;
-    padding: 14px 25px;
+
+    padding: 13px 25px;
+
     border: none;
+
     border-radius: 8px;
+
     background: #3b2415;
+
     color: white;
+
     font-size: 17px;
+
     font-weight: bold;
+
     cursor: pointer;
-    touch-action: manipulation;
-    transition: background 0.2s, transform 0.2s;
+
+    transition:
+        background 0.2s,
+        transform 0.2s;
 }
 
 #nextWarBtn:hover {
+
     background: #6b3e20;
+
     transform: translateY(-2px);
 }
 
 #nextWarBtn:active {
+
     transform: translateY(0);
 }
 
@@ -174,64 +232,50 @@ main {
 ======================================== */
 
 .leaflet-popup-content {
+
     font-size: 14px;
+
     line-height: 1.5;
 }
 
 
 /* ========================================
-   MOBİL (768px ve Altı)
+   MOBİL
 ======================================== */
 
-@media (max-width: 768px) {
-
-    header {
-        padding: 18px 12px;
-    }
+@media (max-width: 700px) {
 
     header h1 {
-        font-size: 28px;
+        font-size: 32px;
     }
 
     header p {
-        font-size: 14px;
+        font-size: 16px;
     }
 
     main {
-        padding: 10px;
+        padding: 15px;
     }
 
     #harita {
-        height: 55vh;
-        min-height: 320px;
+        height: 450px;
+
         border-width: 3px;
-        border-radius: 10px;
     }
 
     .timeline-container {
-        padding: 15px;
-        margin-top: 15px;
-        border-radius: 10px;
+        padding: 18px;
     }
 
     .year-display {
-        font-size: 22px;
-        margin-bottom: 12px;
+        font-size: 25px;
     }
 
     #eventInfo {
-        padding: 12px;
-        font-size: 15px;
-        margin-top: 15px;
-    }
-
-    #eventInfo strong {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     #nextWarBtn {
         width: 100%;
-        padding: 15px;
-        font-size: 16px;
     }
 }
