@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TarihAtlas - Tarihsel Zaman Haritası</title>
+    
+    <!-- Leaflet & MapLibre CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@3.6.0/dist/maplibre-gl.css" />
+    
+    <!-- Google Fonts (Inter & Merriweather) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Harita Konteyneri -->
+    <div id="harita"></div>
+
+    <!-- Başlık ve Üst Bar -->
+    <header class="top-bar">
+        <div class="logo">
+            <span class="logo-icon">📜</span>
+            <h1>TARİH<span>ATLAS</span></h1>
+        </div>
+        <div class="year-badge">
+            <span class="year-label">YIL</span>
+            <span id="year">1071</span>
+        </div>
+    </header>
+
+    <!-- Bilgi Paneli (Sol / Alt Kart) -->
+    <main class="info-card">
+        <div id="eventInfo" class="event-content">
+            <!-- JavaScript burayı dinamik dolduruyor -->
+        </div>
+        <button id="nextWarBtn" class="btn-action">
+            <span>Sonraki Savaş</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+    </main>
+
+    <!-- Zaman Çizelgesi Kontrolü (Alt Bar) -->
+    <footer class="timeline-container">
+        <div class="timeline-wrapper">
+            <input type="range" id="timeline" min="0" max="0" value="0" step="1">
+        </div>
+    </footer>
+
+    <!-- Leaflet & MapLibre JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/maplibre-gl@3.6.0/dist/maplibre-gl.js"></script>
+    <script src="https://unpkg.com/@maplibre/maplibre-gl-leaflet@0.0.20/leaflet-maplibre-gl.js"></script>
+    
+    <script src="script.js"></script>
+</body>
+</html>
